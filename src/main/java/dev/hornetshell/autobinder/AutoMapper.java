@@ -46,8 +46,8 @@ public class AutoMapper {
     private boolean acceptNull;
 
     AutoMapper(boolean ignoreUnknown, boolean acceptNull) {
-        this.ignoreUnknown = ignoreUnknown;
-        this.acceptNull = acceptNull;
+        this.ignoreUnknown = ignoreUnknown; // TODO: implement this
+        this.acceptNull = acceptNull; // TODO: implement this
     }
 
     /**
