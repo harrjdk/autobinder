@@ -3,6 +3,7 @@ package dev.hornetshell.autobinder.testdto;
 import java.util.List;
 import java.util.UUID;
 
+
 public class BigDto {
 
     private UUID id;
