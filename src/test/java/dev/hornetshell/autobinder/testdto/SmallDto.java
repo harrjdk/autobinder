@@ -1,12 +1,16 @@
 package dev.hornetshell.autobinder.testdto;
 
+import dev.hornetshell.autobinder.Converter;
+
 import java.util.UUID;
 
 public class SmallDto {
 
+    public static final String SMALL_DTO_USER_COUNT = "small dto user count";
     private UUID id;
     private String name;
     private String description;
+    private int userCount;
 
     public SmallDto() {
         // no-op
@@ -34,5 +38,14 @@ public class SmallDto {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getUserCount() {
+        return userCount;
+    }
+
+    @Converter(value = SMALL_DTO_USER_COUNT, matchingProperty = "users")
+    public void setUserCount(int userCount) {
+        this.userCount = userCount;
     }
 }

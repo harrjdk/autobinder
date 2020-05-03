@@ -1,6 +1,5 @@
 package dev.hornetshell.autobinder;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
@@ -17,7 +16,7 @@ import java.util.stream.Stream;
  */
 public class AutoType<T> {
 
-    static enum MethodType {
+    enum MethodType {
         GETTER,
         SETTER
     }
@@ -25,12 +24,12 @@ public class AutoType<T> {
     private static Pattern getterPattern = Pattern.compile("^(get|is)[A-Z]{1}.*$");
     private static Pattern setterPattern = Pattern.compile("^set[A-Z]{1}.*$");
 
-    private static ConcurrentHashMap<String, AutoType> typeCache = new ConcurrentHashMap<String, AutoType>();
+    private static ConcurrentHashMap<String, AutoType> typeCache = new ConcurrentHashMap<>();
 
     public static <T> AutoType<T> of(Class<T> clazz) {
         if (clazz != null) {
             final String className = String.format("%s.%s", clazz.getPackage().getName(), clazz.getCanonicalName());
-            return typeCache.computeIfAbsent(className, (s) -> new AutoType<T>(clazz));
+            return typeCache.computeIfAbsent(className, s -> new AutoType<T>(clazz));
         } else {
             throw new IllegalArgumentException("Cannot create AutoType of null!", new NullPointerException());
         }
