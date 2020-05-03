@@ -11,13 +11,15 @@ public class BigDto {
     private int count;
     private String description;
     private List<String> users;
+    private List<Permission> permissions;
 
-    public BigDto(UUID id, String name, int count, String description, List<String> users) {
+    public BigDto(UUID id, String name, int count, String description, List<String> users, List<Permission> permissions) {
         this.id = id;
         this.name = name;
         this.count = count;
         this.description = description;
         this.users = users;
+        this.permissions = permissions;
     }
 
     public UUID getId() {
@@ -54,5 +56,31 @@ public class BigDto {
 
     public void setUsers(List<String> users) {
         this.users = users;
+    }
+
+    public List<Permission> getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(List<Permission> permissions) {
+        this.permissions = permissions;
+    }
+
+    public static class Permission {
+        private String name;
+        private boolean allowed;
+
+        public Permission(String name, boolean allowed) {
+            this.name = name;
+            this.allowed = allowed;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public boolean isAllowed() {
+            return allowed;
+        }
     }
 }
